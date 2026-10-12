@@ -1,0 +1,6 @@
+@AcxiomCrmApi_HostAddress = http://localhost:5269
+
+GET {{AcxiomCrmApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
