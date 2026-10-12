@@ -201,7 +201,7 @@ const runAllTests = async () => {
     const uniqueEmail = `valid_cust_${Date.now()}@acxiom.com`;
     const uniquePhone = `99${Date.now().toString().slice(-8)}`;
     const cValid = await request('POST', '/api/customers', {}, {
-      customerName: 'Acxiom Verified Solutions',
+      customerName: `Acxiom Verified Solutions ${Date.now()}`,
       email: uniqueEmail,
       phone: uniquePhone,
       companyName: 'Acxiom Enterprises',
@@ -473,7 +473,7 @@ const runAllTests = async () => {
         p2.status === 200 &&
         p2.body.pagination.page === 2 &&
         p2.body.data.length > 0 &&
-        p2.body.data[0].customerName !== p1.body.data[0].customerName,
+        (p2.body.data[0].customerCode !== p1.body.data[0].customerCode || p2.body.data[0].email !== p1.body.data[0].email || p2.body.data[0].customerName !== p1.body.data[0].customerName),
         'Pagination: Page=2 returns subsequent page of distinct records'
       );
     } else {
